@@ -1,12 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import { Stack } from './lib/nav';
+import { useTheme } from './lib/theme';
+import { HomeScreen } from './screens/HomeScreen';
+import { NoteScreen } from './screens/NoteScreen';
 
 export default function App() {
+  const t = useTheme();
+
   return (
-    <View className="flex-1 items-center justify-center bg-white dark:bg-black">
-      <Text className="text-2xl font-semibold text-black dark:text-white">joyous-azure-landfowl</Text>
-      <Text className="mt-2 text-base text-neutral-500">Ask the agent to build something.</Text>
-      <StatusBar style="auto" />
-    </View>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: t.bg }}>
+      <SafeAreaProvider>
+        <KeyboardProvider>
+          <Stack
+            background={t.bg}
+            render={(route) => (route.name === 'Home' ? <HomeScreen /> : <NoteScreen key={route.id} />)}
+          />
+          <StatusBar style="auto" />
+        </KeyboardProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }

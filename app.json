@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "joyous-azure-landfowl",
+    "slug": "joyous-azure-landfowl",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": { "bundleIdentifier": "computer.inti.joyousazurelandfowl" },
+    "scheme": "joyousazurelandfowl"
+  }
+}
